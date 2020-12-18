@@ -8,14 +8,12 @@ Pineapple {
 
 	init {
 		proxyspace = ProxySpace.new(Server.default);
-		currentEnvironment[\pineapple] = this;
-
-		this.loadSamples;
 	}
 
 	loadSamples {
+		arg process;
 		samples = ();
-		samples.add(\foldernames -> PathName("C:/Users/patri/Documents/SuperCollider/Samples").entries);
+		samples.add(\foldernames -> PathName(process.nowExecutingPath.dirname ++ "/Samples").entries);
 		for (0, samples[\foldernames].size-1,
 			{
 				arg i;
